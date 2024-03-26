@@ -114,7 +114,7 @@ module.exports = {
             } else {
                 return res.json({
                     success: 0,
-                    message: 'Invalid email or password!!!'
+                    message: 'Invalid email or password!'
                 })
             }
         } catch (e) {

@@ -1,7 +1,7 @@
 const { create, getUsers, getuserById, updateUser, deleteuser, getUserByEmail } = require('./user.service');
 const { genSaltSync, hashSync, compareSync } = require('bcrypt')
 const { sign, verify } = require('jsonwebtoken');
-const AppError = require('../../utils/appError');
+const AppError = require('../../../utils/appError');
 
 module.exports = {
     createUser: async (req, res, next) => {
@@ -9,6 +9,16 @@ module.exports = {
         const salt = genSaltSync(10);
         body.password = hashSync(body.password, salt);
         try {
+            const isUserExist = await getUserByEmail(body.email)
+            console.log(isUserExist)
+            if(isUserExist){
+                return res.status(200).json({
+                    success: 0,
+                    message: 'User Email alread exists',
+                    data: [],
+                })
+            }
+            
             const result = await create(body)
             return res.status(200).json({
                 success: 1,
@@ -150,8 +160,8 @@ module.exports = {
                 return res.status(403).send({ success: 0, message: 'Invalid Token Data!!' })
             }
         } catch (e) {
-            console.log('ERror::::', e)
+            console.log('ERROR::::', e)
             next(e)
         }
-    }
+    },
 }

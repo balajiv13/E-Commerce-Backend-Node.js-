@@ -1,17 +1,16 @@
-const pool = require('../../config/database');
+const pool = require('../../../config/database');
 
 module.exports = {
     create: (data) => {
         return new Promise((resolve, reject) => {
-            pool.query(`insert into users (first_name, last_name, email, password, phone_number, check_status) values (?, ?, ?, ?, ?, ?)`,
+            pool.query(`insert into users (first_name, last_name, email, password, phone_number) values (?, ?, ?, ?, ?)`,
 
                 [
-                    data.firstName,
-                    data.lastName,
+                    data.first_name,
+                    data.last_name,
                     data.email,
                     data.password,
-                    data.mobileNumber,
-                    data.acceptTerms
+                    data.phone_number,
                 ]
                 , (error, results) => {
                     if (error) {
@@ -91,5 +90,5 @@ module.exports = {
                 })
             )
         })
-    }
+    },
 }

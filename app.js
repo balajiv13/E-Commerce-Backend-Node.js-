@@ -4,12 +4,14 @@ const app = express();
 const cors = require("cors");
 
 
-const userRouter = require('./api/users/user.router');
+const userRouter = require('./api/v1/users/user.router');
+const productRouter = require('./api/v1/products/product.route')
 const AppError = require('./utils/appError');
 app.use(cors());
 app.use(express.json());
 
 app.use('/api/users', userRouter);
+app.use('/api/product', productRouter)
 
 app.all('*', (req, res, next)=>{
   const err = new AppError(`Requested URL ${req.path} not found!`, 404);

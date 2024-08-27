@@ -7,7 +7,7 @@ CREATE TABLE `users` (
   `dob` date DEFAULT NULL,
   `phone_number` varchar(15) NOT NULL,
   `role` enum('customer', 'admin') DEFAULT 'customer',
-  -- `check_status` enum('true',  'false') DEFAULT 'true',
+  `check_status` enum('true',  'false') DEFAULT 'true',
   `status` enum('A', 'IA') DEFAULT 'A',
   `created_by` varchar(100) DEFAULT NULL,
   `created_date` datetime DEFAULT (CURRENT_DATE),

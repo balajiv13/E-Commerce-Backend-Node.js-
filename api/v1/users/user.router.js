@@ -1,6 +1,6 @@
 const {createUser, getUsersData, getUserById, deleteUser, updateUser, login, getUserByToken} = require('./user.controller')
 const router = require('express').Router();
-const {checkToken} = require('../../auth/token.validate')
+const {checkToken} = require('../../../auth/token.validate')
 
 router.post('/createUser',  createUser);
 // router.post('/getUsers', getUsersData)

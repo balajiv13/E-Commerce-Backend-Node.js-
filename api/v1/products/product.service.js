@@ -57,5 +57,18 @@ module.exports = {
             // console.error('Error fetching menu category:', error);
             throw error;  // Properly propagate the error
         }
-    }
+    },
+
+    getCategoryList1: () =>{
+        return new Promise((resolve, reject)=>{
+            pool.query(
+                `select * from mfgr_mstr where status = 1 `,
+                [],
+                ((error, result)=>{
+                    if(error) return reject(error)
+                    return resolve(result)
+                })
+            )
+        })
+    },
 };

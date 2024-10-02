@@ -157,6 +157,15 @@ module.exports = {
     },
 
     getStorageLoaction: ()=>{
-        
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `select * from storage_location_mstr where status = '1'`,
+                [],
+                ((error, result) => {
+                    if (error) return reject(error)
+                    return resolve(result)
+                })
+            )
+        })
     }
 };

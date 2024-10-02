@@ -22,7 +22,7 @@ insert into users (first_name, last_name, email, password, dob, phone_number, ro
 
 
  -- select * from aerp_master_item limit 1 \G;
-
+-- CREATE TABLE db1.table1 SELECT * FROM db2.table1
 
  CREATE TABLE `item_move_status` (
   `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,

@@ -1,5 +1,5 @@
 const AppError = require('../../../utils/appError');
-const { fetchMenuCategory, getCategoryList1, getCategoryList2, getCategoryList3, getCategoryList4, getCategoryList5, getCategoryList6, getCategoryList7, getMovingStatus } = require('./product.service');
+const { fetchMenuCategory, getCategoryList1, getCategoryList2, getCategoryList3, getCategoryList4, getCategoryList5, getCategoryList6, getCategoryList7, getMovingStatus, getStorageLoaction } = require('./product.service');
 
 module.exports = {
     fetchMenuCategoryList: async (req, res, next) => {
@@ -138,4 +138,20 @@ module.exports = {
             next(e);
         }
     },
+
+    getStorageLoaction: async(req, res, next)=>{
+        try {
+            const result = await getStorageLoaction()
+            if (!result.length) {
+                throw new AppError('Record not found!', 404)
+            }
+            return res.json({
+                success: 1,
+                message: 'Data fetched Successfully',
+                data: result,
+            })
+        } catch (e) {
+            next(e);
+        } 
+    }
 }

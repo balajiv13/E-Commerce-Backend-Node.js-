@@ -59,16 +59,104 @@ module.exports = {
         }
     },
 
-    getCategoryList1: () =>{
-        return new Promise((resolve, reject)=>{
+    getCategoryList1: () => {
+        return new Promise((resolve, reject) => {
             pool.query(
                 `select * from mfgr_mstr where status = 1 `,
                 [],
-                ((error, result)=>{
-                    if(error) return reject(error)
+                ((error, result) => {
+                    if (error) return reject(error)
                     return resolve(result)
                 })
             )
         })
     },
+    getCategoryList2: () => {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `select * from item_mstr where status = 1 `,
+                [],
+                ((error, result) => {
+                    if (error) return reject(error)
+                    return resolve(result)
+                })
+            )
+        })
+    },
+    getCategoryList3: () => {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `select * from segment_mstr where status = 1 `,
+                [],
+                ((error, result) => {
+                    if (error) return reject(error)
+                    return resolve(result)
+                })
+            )
+        })
+    },
+    getCategoryList4: () => {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `select * from vehicle_type_mstr where status = 1 `,
+                [],
+                ((error, result) => {
+                    if (error) return reject(error)
+                    return resolve(result)
+                })
+            )
+        })
+    },
+    getCategoryList5: () => {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `select * from vehicle_specification_mstr where status = 1 `,
+                [],
+                ((error, result) => {
+                    if (error) return reject(error)
+                    return resolve(result)
+                })
+            )
+        })
+    },
+    getCategoryList6: () => {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `select * from type_mstr where status = 1 `,
+                [],
+                ((error, result) => {
+                    if (error) return reject(error)
+                    return resolve(result)
+                })
+            )
+        })
+    },
+    getCategoryList7: () => {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `select * from item_cat7_mstr where status = 1 `,
+                [],
+                ((error, result) => {
+                    if (error) return reject(error)
+                    return resolve(result)
+                })
+            )
+        })
+    },
+    getMovingStatus: () => {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `select * from item_move_status where status = 'A'`,
+                [],
+                ((error, result) => {
+                    if (error) return reject(error)
+                    return resolve(result)
+                })
+            )
+        })
+    },
+
+    getStorageLoaction: ()=>{
+        
+    }
 };

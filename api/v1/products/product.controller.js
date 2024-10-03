@@ -1,5 +1,5 @@
 const AppError = require('../../../utils/appError');
-const { fetchMenuCategory, getCategoryList1, getCategoryList2, getCategoryList3, getCategoryList4, getCategoryList5, getCategoryList6, getCategoryList7, getMovingStatus, getStorageLoaction } = require('./product.service');
+const { fetchMenuCategory, getCategoryList1, getCategoryList2, getCategoryList3, getCategoryList4, getCategoryList5, getCategoryList6, getCategoryList7, getMovingStatus, getStorageLoaction, createProduct } = require('./product.service');
 
 module.exports = {
     fetchMenuCategoryList: async (req, res, next) => {
@@ -153,5 +153,19 @@ module.exports = {
         } catch (e) {
             next(e);
         } 
+    },
+
+    createProduct: async(req, res, next)=>{
+        try {
+            const result = await createProduct(req.body);
+            console.log('***', result)
+            return res.status(200).json({
+                success: 1,
+                message: 'Product created successfully',
+                data: result,
+            })
+        }catch (e){
+            next(e);
+        }
     }
 }

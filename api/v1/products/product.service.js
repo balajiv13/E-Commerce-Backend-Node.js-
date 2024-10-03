@@ -156,7 +156,7 @@ module.exports = {
         })
     },
 
-    getStorageLoaction: ()=>{
+    getStorageLoaction: () => {
         return new Promise((resolve, reject) => {
             pool.query(
                 `select * from storage_location_mstr where status = '1'`,
@@ -165,6 +165,44 @@ module.exports = {
                     if (error) return reject(error)
                     return resolve(result)
                 })
+            )
+        })
+    },
+
+    createProduct: (data) => {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                'INSERT INTO `product_mstr` (`cat1_key`, `cat2_key`, `cat3_key`, `cat4_key`, `cat5_key`, `cat6_key`, `cat7_key`, `part_no`, `prod_name`, `short_name`, `HSN_code`, `mrp_price`, `sales_price`, `purchase_price`, `list_price`, `moving_stat_key`, `commision_apply`, `comm_percent`, `storage_mstr_key`, `self_no`, `total_weight`, `weight_unit`, `stock_unit`, `isnew_product`,`created_by`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                [data.catergory1,
+                data.catergory2,
+                data.catergory3,
+                data.catergory4,
+                data.catergory5,
+                data.catergory6,
+                data.catergory7,
+                data.catergory7,
+                data.partNo,
+                data.productName,
+                data.shortName,
+                data.HSNCode,
+                data.mrpPrize,
+                data.salesPrize,
+                data.purchasePrize,
+                data.listPrize,
+                data.movingStatus,
+                data.commissionApply,
+                data.CmnPct,
+                data.strgLoc,
+                data.shelfNo,
+                data.weight,
+                data.stockUnit,
+                data.isNewProduct,
+                    'admin'
+                ],
+                (error, result) => {
+                    if (error) return reject(error)
+                    return resolve(result)
+                }
             )
         })
     }
